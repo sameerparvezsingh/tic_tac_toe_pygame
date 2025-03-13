@@ -88,11 +88,11 @@ def draw_status():
 
     else:
 
-        message = current_winner.upper() + " won !"
+        message = current_winner.upper() + " won! Resetting in 10 Seconds"
 
     if is_draw:
 
-        message = "Game Draw !"
+        message = "Game Draw! Resetting in 10 Seconds"
 
     font = pg.font.Font(None, 30)
 
@@ -100,7 +100,7 @@ def draw_status():
 
     screen.fill((0, 0, 0), (0, 400, 475, 100))
 
-    text_rect = text.get_rect(center=(WIDTH / 2, HEIGHT/2))
+    text_rect = text.get_rect(center=(WIDTH / 2, HEIGHT+50))
 
     screen.blit(text, text_rect)
 
@@ -268,7 +268,7 @@ def reset_game():
 
     global grid, current_winner, current_player, is_draw
 
-    time.sleep(3)
+    time.sleep(10)
 
     current_player = 'x'
 
@@ -290,13 +290,13 @@ while True: # continue loop until user closes the window
 
     for event in pg.event.get(): # check for new events
 
-        if event.type == QUIT:
+        if event.type == pg.QUIT:
 
             pg.quit()
 
             sys.exit()
 
-        elif event.type == MOUSEBUTTONDOWN:
+        elif event.type == pg.MOUSEBUTTONDOWN:
 
             user_click()
 
